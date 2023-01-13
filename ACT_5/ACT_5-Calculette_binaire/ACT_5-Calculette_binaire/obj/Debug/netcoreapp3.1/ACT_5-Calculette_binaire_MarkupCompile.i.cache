@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-H:\UAA14_WPF_XAML\ACT_5\ACT_5-Calculette_binaire\ACT_5-Calculette_binaire\obj\Debug\netcoreapp3.1\
+H:\UAA14_POO_WPF\ACT_5\ACT_5-Calculette_binaire\ACT_5-Calculette_binaire\obj\Debug\netcoreapp3.1\
 ACT_5_Calculette_binaire
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-H:\UAA14_WPF_XAML\ACT_5\ACT_5-Calculette_binaire\ACT_5-Calculette_binaire\App.xaml
+H:\UAA14_POO_WPF\ACT_5\ACT_5-Calculette_binaire\ACT_5-Calculette_binaire\App.xaml
 11407045341
 
 6595837985
 192-1533232326
 MainWindow.xaml;
 
-True
+False
 

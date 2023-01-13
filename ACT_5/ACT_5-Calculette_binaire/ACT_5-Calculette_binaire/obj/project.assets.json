@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\UAA14_WPF_XAML\\ACT_5\\ACT_5-Calculette_binaire\\ACT_5-Calculette_binaire\\ACT_5-Calculette_binaire.csproj",
+      "projectUniqueName": "H:\\UAA14_POO_WPF\\ACT_5\\ACT_5-Calculette_binaire\\ACT_5-Calculette_binaire\\ACT_5-Calculette_binaire.csproj",
       "projectName": "ACT_5-Calculette_binaire",
-      "projectPath": "H:\\UAA14_WPF_XAML\\ACT_5\\ACT_5-Calculette_binaire\\ACT_5-Calculette_binaire\\ACT_5-Calculette_binaire.csproj",
+      "projectPath": "H:\\UAA14_POO_WPF\\ACT_5\\ACT_5-Calculette_binaire\\ACT_5-Calculette_binaire\\ACT_5-Calculette_binaire.csproj",
       "packagesPath": "C:\\Users\\200198.asty-moulin\\.nuget\\packages\\",
-      "outputPath": "H:\\UAA14_WPF_XAML\\ACT_5\\ACT_5-Calculette_binaire\\ACT_5-Calculette_binaire\\obj\\",
+      "outputPath": "H:\\UAA14_POO_WPF\\ACT_5\\ACT_5-Calculette_binaire\\ACT_5-Calculette_binaire\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
