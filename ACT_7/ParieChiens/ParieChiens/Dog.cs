@@ -1,35 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace ParieChiens
 {
     class Dog
     {
-        private int _number;
-        private double[] _position;
+        private int _longueurPiste;
+        private int _numChien;
+        BitmapImage _imageChien = new BitmapImage();
+        int[] _positionCourante = new int[2];
+        bool _gagne;
 
-        public Dog(int number)
+        public Dog(int numChien)
         {
-            this._number = number;
-            this._position = new double[2];
-        }
-
-        public void Move()
-        {
-
-        }
-
-        public int Number
-        {
-            get { return _number; }
-            set { _number = value; }
-        }
-
-        public double[] Position
-        {
-            get { return _position; }
-            set { _position = value; }
+            this._longueurPiste = 1500;
+            
+            this._numChien = numChien;
+            
+            this._imageChien.EndInit();
+            this._imageChien.BeginInit();
+            this._imageChien.UriSource = new Uri("/dog.png", UriKind.Relative);
         }
     }
 }

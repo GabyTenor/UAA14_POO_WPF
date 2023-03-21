@@ -24,5 +24,12 @@ namespace ParieChiens
         {
             InitializeComponent();
         }
+
+        public void PlacerImage()
+        {
+            Image monImage = new Image();
+            //monImage.Source = imageChien;
+            monImage.Stretch = System.Windows.Media.Stretch.None;
+        }
     }
 }

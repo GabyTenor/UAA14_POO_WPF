@@ -5,8 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ParieChiens"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        FontSize="25"
+        Title="MainWindow" Height="700" Width="850">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="271"/>
+            <RowDefinition Height="413"/>
+        </Grid.RowDefinitions>
 
+        <Image Source="racetrack.png"/>
+
+        <GroupBox Grid.Row="2">
+            
+            <GroupBox.Header>Salle des paris</GroupBox.Header>
+            
+            <Grid Grid.Row="2" x:Name="interface">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="203"/>
+                    <RowDefinition Height="131"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="399"/>
+                    <ColumnDefinition Width="399"/>
+                </Grid.ColumnDefinitions>
+
+                <GroupItem>
+                    <StackPanel>
+                        <TextBlock FontWeight="Bold">Pari minimum : 5 écus</TextBlock>
+                        <RadioButton x:Name="joe">Joe possède 50 écus</RadioButton>
+                        <RadioButton x:Name="bob">Bob possède 50 écus</RadioButton>
+                        <RadioButton x:Name="bill">Bill possède 50 écus</RadioButton>
+                    </StackPanel>
+                </GroupItem>
+
+                <GroupItem Grid.Column="1">
+                    <StackPanel>
+                        <TextBlock FontWeight="Bold">Paris</TextBlock>
+                        <TextBlock x:Name="joeInfo">Joe n'a pas encore parié</TextBlock>
+                        <TextBlock x:Name="bobInfo">Bob n'a pas encore parié</TextBlock>
+                        <TextBlock x:Name="billInfo">Bill n'a pas encore parié</TextBlock>
+                    </StackPanel>
+                </GroupItem>
+
+                <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
+                    <WrapPanel>
+                        <TextBlock x:Name="coche"></TextBlock>
+                        <Button x:Name="parie" Content="Parie"></Button>
+                        <TextBox x:Name="mise" Margin="20,0"></TextBox>
+                        <TextBlock>écus sur le chien numéro</TextBlock>
+                        <TextBox x:Name="numChien" Margin="20,0"></TextBox>
+                        <Button x:Name="demarrer" Content="LANCER LA COURSE !"></Button>
+                    </WrapPanel>
+                    <Button x:Name="reset" Content="RESET"></Button>
+                </StackPanel>
+                
+
+            </Grid>
+        </GroupBox>
+        
+    
     </Grid>
 </Window>
