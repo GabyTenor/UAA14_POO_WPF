@@ -13,8 +13,10 @@
             <RowDefinition Height="413"/>
         </Grid.RowDefinitions>
 
-        <Image Source="racetrack.png"/>
-
+        <Canvas x:Name="circuit">
+            <Image Source="racetrack.png"/>
+        </Canvas>
+        
         <GroupBox Grid.Row="2">
             
             <GroupBox.Header>Salle des paris</GroupBox.Header>
