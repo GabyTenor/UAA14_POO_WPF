@@ -19,10 +19,15 @@ namespace ParieChiens
     /// </summary>
     public partial class MainWindow : Window
     {
-        Dog chien1 = new Dog(1, new int[2] { 0, 0});
-        Dog chien2 = new Dog(2, new int[2] { 0, 0 });
-        Dog chien3 = new Dog(3, new int[2] { 0, 0 });
-        Dog chien4 = new Dog(4, new int[2] { 0, 0 });
+        Dog[] chien = new Dog[4]
+        {
+            new Dog(1, new int[2] {0, 0}),
+            new Dog(2, new int[2] {0, 0}),
+            new Dog(3, new int[2] {0, 0}),
+            new Dog(4, new int[2] {0, 0}),
+        };
+
+        string miseur;
 
         public MainWindow()
         {
@@ -30,6 +35,12 @@ namespace ParieChiens
             mise.PreviewTextInput += new TextCompositionEventHandler(PreviewMise);
             numChien.PreviewTextInput += new TextCompositionEventHandler(PreviewNumChien);
 
+            parie.Click += new RoutedEventHandler(MettrePari);
+            demarrer.Click += new RoutedEventHandler(LancerLaCourse);
+
+            joe.Checked += new RoutedEventHandler(Coche);
+            bob.Checked += new RoutedEventHandler(Coche);
+            bill.Checked += new RoutedEventHandler(Coche);
         }
         public void PreviewMise(object sender, TextCompositionEventArgs e)
         {
@@ -55,7 +66,7 @@ namespace ParieChiens
             }
             else
             {
-                if(((TextBox)sender).Text.Length > 0)
+                if (((TextBox)sender).Text.Length > 0)
                 {
                     e.Handled = true;
                 }
@@ -80,18 +91,47 @@ namespace ParieChiens
                     default:
 
                         e.Handled = true;
-                    break;
+                        break;
                 }
             }
         }
 
+        public void Coche(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        
+
+        public void MettrePari(object sender, RoutedEventArgs e)
+        {
+            int miseEcus;
+            int numChienMise;
+
+            if(int.TryParse(mise.Text, out miseEcus) && int.TryParse(numChien.Text, out numChienMise))
+            {                
+                mise.Background = Brushes.White;
+                numChien.Background = Brushes.White;
+            }
+            else
+            {
+                mise.Background = Brushes.Red;
+                numChien.Background = Brushes.Red;
+            }
+        }
+
+        public void LancerLaCourse(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         public void PlacerChien()
         {
-            Image monImage = new Image();
-            monImage.Source = chien1.ImageChien;
-            monImage.Stretch = System.Windows.Media.Stretch.None;
-
-
+            for (int i = 0; i < chien.Length; i++)
+            {
+                chien[i].GenererImage();
+                circuit.Children.Add(chien[i]);
+            }
         }
 
         public bool EstEntier(string text)

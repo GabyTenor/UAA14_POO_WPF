@@ -8,10 +8,14 @@
 
   <ItemGroup>
     <None Remove="racetrack.png" />
+    <None Remove="Resources\dog.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="racetrack.png">
+    <Resource Include="Resources\dog.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\racetrack.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

@@ -12,9 +12,9 @@ namespace ParieChiens
     {
         private int _longueurPiste;
         private int _numChien;
-        BitmapImage _imageChien = new BitmapImage();
-        int[] _positionCourante = new int[2];
-        bool _gagne;
+        Image _imageChien;
+        private int[] _positionCourante = new int[2];
+        private bool _gagne;
          
         public Dog(int numChien, int[] positionCourante)
         {
@@ -23,20 +23,24 @@ namespace ParieChiens
             this._numChien = numChien;
 
             this._positionCourante = positionCourante;
-            
-            this._imageChien.BeginInit();
-            this._imageChien.UriSource = new Uri("/dog.png", UriKind.Relative);
-            this._imageChien.EndInit();
+           
 
-            MainWindow plateau = (ParieChiens.MainWindow)App.Current.MainWindow;
+            
+        }
+
+        public void GenererImage() {
+            BitmapImage img = new BitmapImage();
+            img.BeginInit();
+            img.UriSource = new Uri("/Resources/dog.png", UriKind.Relative);
+            img.EndInit();
+
+            MainWindow plateau = (MainWindow)System.Windows.Application.Current.MainWindow;
 
             Image monImage = new Image();
-            monImage.Source = _imageChien;
-            monImage.Stretch = System.Windows.Media.Stretch.None;
+            monImage.Source = img;
+            monImage.Stretch = Stretch.None;
 
-            Canvas.SetLeft(monImage, _positionCourante[0]);
-            Canvas.SetTop(monImage, _positionCourante[1]);
-            plateau.circuit.Children.Add(monImage);
+            _imageChien = monImage;
 
         }
 
@@ -45,6 +49,13 @@ namespace ParieChiens
             get { return _imageChien; }
             set { _imageChien = value; }
         }
+
+        public int[] PositionCourante
+        {
+            get { return _positionCourante; }
+            set { _positionCourante = value; }
+        }
+
 
     }
 }

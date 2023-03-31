@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <Canvas x:Name="circuit">
-            <Image Source="racetrack.png"/>
+            <Image Source="Resources/racetrack.png"/>
         </Canvas>
         
         <GroupBox Grid.Row="2">

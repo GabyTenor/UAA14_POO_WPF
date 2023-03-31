@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:ParieChiens"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!--<BitmapImage x:Key="dog" UriSource="\Resoures\dog.png"/>-->
     </Application.Resources>
 </Application>
