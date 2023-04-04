@@ -19,99 +19,83 @@ namespace ParieChiens
     /// </summary>
     public partial class MainWindow : Window
     {
-        Dog[] chien = new Dog[4]
+        AnteJeu preJeu = new AnteJeu();
+
+        Dog[] chiens = new Dog[4];
+        Bet pari = new Bet();
+        User[] participants = new User[3]
         {
-            new Dog(1, new int[2] {0, 0}),
-            new Dog(2, new int[2] {0, 0}),
-            new Dog(3, new int[2] {0, 0}),
-            new Dog(4, new int[2] {0, 0}),
+            new User("Joe", 50),
+            new User("Bob", 50),
+            new User("Bill", 50)
         };
 
-        string miseur;
+        public string miseur = "";
+        public bool coche;
 
         public MainWindow()
         {
             InitializeComponent();
-            mise.PreviewTextInput += new TextCompositionEventHandler(PreviewMise);
-            numChien.PreviewTextInput += new TextCompositionEventHandler(PreviewNumChien);
+            CreerChien();
+
+            mise.PreviewTextInput += new TextCompositionEventHandler(preJeu.PreviewMise);
+            numChien.PreviewTextInput += new TextCompositionEventHandler(preJeu.PreviewNumChien);
 
             parie.Click += new RoutedEventHandler(MettrePari);
             demarrer.Click += new RoutedEventHandler(LancerLaCourse);
 
-            joe.Checked += new RoutedEventHandler(Coche);
-            bob.Checked += new RoutedEventHandler(Coche);
-            bill.Checked += new RoutedEventHandler(Coche);
+            joe.Checked += new RoutedEventHandler(preJeu.Coche);
+            bob.Checked += new RoutedEventHandler(preJeu.Coche);
+            bill.Checked += new RoutedEventHandler(preJeu.Coche);
+           
         }
-        public void PreviewMise(object sender, TextCompositionEventArgs e)
+        public void CreerChien()
         {
-            if (!EstEntier(e.Text))
+            for (int i = 0; i < chiens.Length; i++)
             {
-                e.Handled = true;
-            }
-            else
-            {
-                if(((TextBox)sender).Text.Length > 2)
-                {
-                    e.Handled = true;
-                }
-            }
-            
-        }
-
-        public void PreviewNumChien(object sender, TextCompositionEventArgs e)
-        {
-            if (!EstEntier(e.Text))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                if (((TextBox)sender).Text.Length > 0)
-                {
-                    e.Handled = true;
-                }
-                switch (e.Text)
-                {
-                    case "1":
-
-                        break;
-
-                    case "2":
-
-                        break;
-
-                    case "3":
-
-                        break;
-
-                    case "4":
-
-                        break;
-
-                    default:
-
-                        e.Handled = true;
-                        break;
-                }
+                chiens[i] = new Dog(i + 1, new int[2] { 40, 70 * i });
             }
         }
-
-        public void Coche(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        
-
+ 
         public void MettrePari(object sender, RoutedEventArgs e)
         {
             int miseEcus;
             int numChienMise;
+            bool done = false;
 
-            if(int.TryParse(mise.Text, out miseEcus) && int.TryParse(numChien.Text, out numChienMise))
-            {                
-                mise.Background = Brushes.White;
-                numChien.Background = Brushes.White;
+            mise.Background = Brushes.White;
+            numChien.Background = Brushes.White;
+            informations.Text = "";
+
+            if (int.TryParse(mise.Text, out miseEcus) && int.TryParse(numChien.Text, out numChienMise) && coche)
+            {
+                informations.Text = "Mise validée!";
+
+                switch (miseur)
+                {
+                    case "Joe":
+                        if (participants[0].PlaceTheBet(miseEcus))
+                        {
+                            done = true;
+                        }
+
+                        break;
+
+                    case "Bob":
+                        if (participants[1].PlaceTheBet(miseEcus))
+                        {
+                            done = true;
+                        }
+
+                        break;
+
+                    case "Bill":
+                        if (participants[2].PlaceTheBet(miseEcus))
+                        {
+                            done = true;
+                        }
+                        break;
+                }
             }
             else
             {
@@ -122,34 +106,6 @@ namespace ParieChiens
 
         public void LancerLaCourse(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        public void PlacerChien()
-        {
-            for (int i = 0; i < chien.Length; i++)
-            {
-                chien[i].GenererImage();
-                circuit.Children.Add(chien[i]);
-            }
-        }
-
-        public bool EstEntier(string text)
-        {
-            bool isInt;
-
-            int entier;
-
-            if (int.TryParse(text, out entier))
-            {
-                isInt = true;
-            }
-            else
-            {
-                isInt = false;
-            }
-
-            return isInt;
         }
     }
 }

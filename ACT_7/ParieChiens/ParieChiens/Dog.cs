@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 
@@ -18,36 +15,28 @@ namespace ParieChiens
          
         public Dog(int numChien, int[] positionCourante)
         {
-            this._longueurPiste = 1500;
-            
+            this._longueurPiste = 1500;         
             this._numChien = numChien;
-
             this._positionCourante = positionCourante;
-           
-
-            
+            GenererImage();          
         }
 
-        public void GenererImage() {
-            BitmapImage img = new BitmapImage();
-            img.BeginInit();
-            img.UriSource = new Uri("/Resources/dog.png", UriKind.Relative);
-            img.EndInit();
-
-            MainWindow plateau = (MainWindow)System.Windows.Application.Current.MainWindow;
-
-            Image monImage = new Image();
-            monImage.Source = img;
-            monImage.Stretch = Stretch.None;
-
-            _imageChien = monImage;
-
-        }
-
-        public BitmapImage ImageChien
+        public void GenererImage() 
         {
-            get { return _imageChien; }
-            set { _imageChien = value; }
+            MainWindow plateau = (ParieChiens.MainWindow)App.Current.MainWindow;
+
+            BitmapImage imageChien = new BitmapImage();
+            imageChien.BeginInit();
+            imageChien.UriSource = new Uri("Resources/dog.png", UriKind.Relative);
+            imageChien.EndInit();
+
+            _imageChien = new Image();
+            _imageChien.Source = imageChien;
+            _imageChien.Stretch = System.Windows.Media.Stretch.None;
+
+            Canvas.SetLeft(_imageChien, _positionCourante[0]);
+            Canvas.SetTop(_imageChien, _positionCourante[1]);
+            plateau.circuit.Children.Add(_imageChien);
         }
 
         public int[] PositionCourante

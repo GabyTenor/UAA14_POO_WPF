@@ -52,7 +52,7 @@
 
                 <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom">
                     <WrapPanel>
-                        <TextBlock x:Name="coche"></TextBlock>
+                        <TextBlock x:Name="personneCochee"></TextBlock>
                         <Button x:Name="parie" Content="Parie"></Button>
                         <TextBox x:Name="mise" Margin="20,0"></TextBox>
                         <TextBlock>écus sur le chien numéro</TextBlock>
@@ -60,6 +60,7 @@
                         <Button x:Name="demarrer" Content="LANCER LA COURSE !"></Button>
                     </WrapPanel>
                     <Button x:Name="reset" Content="RESET"></Button>
+                    <TextBlock x:Name="informations"></TextBlock>
                 </StackPanel>
                 
 
