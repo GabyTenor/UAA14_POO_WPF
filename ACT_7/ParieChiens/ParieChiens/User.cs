@@ -15,26 +15,25 @@ namespace ParieChiens
         {
             this._name = name;
             this._money = money;
+            _monPari = new Bet();
             _hasBetted = false;
         }
 
         public bool PlaceTheBet(int miseEcus)
         {
-            bool pariee = false;
+            bool done = false;
 
-            if(_money > 4)
+            if (!_hasBetted)
             {
-                _monPari.Mise += _money;
-                _money -= miseEcus;
-                _hasBetted = true;
+                if (_money > miseEcus)
+                {
+                    _monPari.Mise += _money;
+                    _money -= miseEcus;
+                    done = true;
+                }
             }
-
-            return pariee;
-        }
-
-        public void RemoveMoney()
-        {
-
+            
+            return done;
         }
 
         public void AddMoney()
@@ -56,7 +55,13 @@ namespace ParieChiens
 
         public bool HasBetted
         {
+            set { _hasBetted = value; }
             get { return _hasBetted; }
+        }
+
+        public Bet MonPari
+        {
+            get { return _monPari; }
         }
 
     }

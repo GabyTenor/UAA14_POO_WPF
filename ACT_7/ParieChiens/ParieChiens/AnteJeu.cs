@@ -61,7 +61,7 @@ namespace ParieChiens
 
             fenetre.coche = false;
 
-            if (fenetre.joe.IsChecked == true)
+            if (fenetre.joel.IsChecked == true)
             {
                 fenetre.miseur = "Joe";
                 fenetre.coche = true;

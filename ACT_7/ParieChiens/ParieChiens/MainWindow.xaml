@@ -8,19 +8,23 @@
         FontSize="25"
         Title="MainWindow" Height="700" Width="850">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="167*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="271"/>
             <RowDefinition Height="413"/>
         </Grid.RowDefinitions>
 
-        <Canvas x:Name="circuit">
+        <Canvas x:Name="circuit" Grid.ColumnSpan="2">
             <Image Source="Resources/racetrack.png"/>
         </Canvas>
-        
-        <GroupBox Grid.Row="2">
-            
+
+        <GroupBox Grid.Row="1" Grid.ColumnSpan="2">
+
             <GroupBox.Header>Salle des paris</GroupBox.Header>
-            
+
             <Grid Grid.Row="2" x:Name="interface">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="203"/>
@@ -35,18 +39,18 @@
                 <GroupItem>
                     <StackPanel>
                         <TextBlock FontWeight="Bold">Pari minimum : 5 écus</TextBlock>
-                        <RadioButton x:Name="joe">Joe possède 50 écus</RadioButton>
-                        <RadioButton x:Name="bob">Bob possède 50 écus</RadioButton>
-                        <RadioButton x:Name="bill">Bill possède 50 écus</RadioButton>
+                        <RadioButton Content="Joel possède 50 écus" x:Name="joel"/>
+                        <RadioButton Content="Bob possède 50 écus" x:Name="bob"/>
+                        <RadioButton Content="Bill possède 50 écus"  x:Name="bill"/>
                     </StackPanel>
                 </GroupItem>
 
                 <GroupItem Grid.Column="1">
                     <StackPanel>
                         <TextBlock FontWeight="Bold">Paris</TextBlock>
-                        <TextBlock x:Name="joeInfo">Joe n'a pas encore parié</TextBlock>
-                        <TextBlock x:Name="bobInfo">Bob n'a pas encore parié</TextBlock>
-                        <TextBlock x:Name="billInfo">Bill n'a pas encore parié</TextBlock>
+                        <TextBlock Text="Joel n'a pas encore parié" x:Name="joelInfo"/>
+                        <TextBlock Text="Bob n'a pas encore parié" x:Name="bobInfo"/>
+                        <TextBlock Text="Bill n'a pas encore parié" x:Name="billInfo"/>
                     </StackPanel>
                 </GroupItem>
 
@@ -62,11 +66,11 @@
                     <Button x:Name="reset" Content="RESET"></Button>
                     <TextBlock x:Name="informations"></TextBlock>
                 </StackPanel>
-                
+
 
             </Grid>
         </GroupBox>
-        
-    
+
+
     </Grid>
 </Window>

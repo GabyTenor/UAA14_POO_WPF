@@ -15,7 +15,7 @@ namespace ParieChiens
          
         public Dog(int numChien, int[] positionCourante)
         {
-            this._longueurPiste = 1500;         
+            this._longueurPiste = 700;         
             this._numChien = numChien;
             this._positionCourante = positionCourante;
             GenererImage();          
@@ -39,12 +39,29 @@ namespace ParieChiens
             plateau.circuit.Children.Add(_imageChien);
         }
 
-        public int[] PositionCourante
+        /*public int[] PositionCourante
         {
             get { return _positionCourante; }
             set { _positionCourante = value; }
+        }*/
+
+        public bool Gagne
+        {
+            get { return _gagne; }
         }
 
-
+        public void Court()
+        {
+            MainWindow plateau = (ParieChiens.MainWindow)App.Current.MainWindow;
+            Random rnd = new Random();
+           
+            _positionCourante[0] += (int)(rnd.Next(0,51));
+            Canvas.SetLeft(_imageChien, _positionCourante[0]);
+         
+            if(_positionCourante[0] > _longueurPiste)
+            {
+                _gagne = true;
+            }
+        }
     }
 }
