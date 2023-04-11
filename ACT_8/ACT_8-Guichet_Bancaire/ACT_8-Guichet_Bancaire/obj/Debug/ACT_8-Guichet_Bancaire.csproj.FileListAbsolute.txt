@@ -1,0 +1,5 @@
+H:\UAA14_POO_WPF\ACT_8\ACT_8-Guichet_Bancaire\ACT_8-Guichet_Bancaire\obj\Debug\ACT_8-Guichet_Bancaire.csproj.AssemblyReference.cache
+H:\UAA14_POO_WPF\ACT_8\ACT_8-Guichet_Bancaire\ACT_8-Guichet_Bancaire\obj\Debug\MainWindow.g.cs
+H:\UAA14_POO_WPF\ACT_8\ACT_8-Guichet_Bancaire\ACT_8-Guichet_Bancaire\obj\Debug\App.g.cs
+H:\UAA14_POO_WPF\ACT_8\ACT_8-Guichet_Bancaire\ACT_8-Guichet_Bancaire\obj\Debug\ACT_8-Guichet_Bancaire_MarkupCompile.cache
+H:\UAA14_POO_WPF\ACT_8\ACT_8-Guichet_Bancaire\ACT_8-Guichet_Bancaire\obj\Debug\ACT_8-Guichet_Bancaire_MarkupCompile.lref
