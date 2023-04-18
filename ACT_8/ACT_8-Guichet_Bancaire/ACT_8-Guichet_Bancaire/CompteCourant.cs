@@ -10,17 +10,19 @@ namespace ACT_8_Guichet_Bancaire
     {
         private float _decouvertMax;
 
-        public CompteCourant(float decouvertMax , float porteMonnaie, string numeroCompte): base(porteMonnaie, numeroCompte)
+        public CompteCourant(float decouvertMax , float porteMonnaie, string numeroCompte, Personne proprietaire)
         {
             this._decouvertMax = decouvertMax;
+            this._porteMonnaie = porteMonnaie;
+            this._numeroCompte = numeroCompte;
         }
 
         public override string Afficher()
         {
-            return "";
+            return "Plafond autorisé : " + _decouvertMax + "\nPorte Monnaie : " + _porteMonnaie + "\nNuméro de compte : " + _numeroCompte + "\nPropriétaire : " + _proprietaire.Nom + " " + _proprietaire.Prenom;
         }
 
-        public override string Transaction(CompteCourant client, string typeTransaction, float virement)
+        public override string Transaction(CompteEpargne epargne, CompteCourant client, string typeTransaction, float virement)
         {
             switch (typeTransaction)
             {
@@ -32,16 +34,21 @@ namespace ACT_8_Guichet_Bancaire
                     }
                     else
                     {
-                        return "Transaction impossible, vérifier le montant de votre virement";
+                        return "Transaction impossible";
                     }
                     break;
 
                 case "Transaction Compte Epargne":
 
-                    return "";
-
+                    if(TransactionEpargne(epargne, virement))
+                    {
+                        return "Transaction effectué avec succès !";
+                    }
+                    else
+                    {
+                        return "Transaction impossible";
+                    }
                     break;
-
 
                 default:
                     return "";
@@ -51,17 +58,54 @@ namespace ACT_8_Guichet_Bancaire
 
         private bool TransactionEntrePersonnes(CompteCourant client, float virement)
         {
-            if ((_porteMonnaie - virement) < _decouvertMax)
+            if(_proprietaire.Nom != client.Proprietaire.Nom)
             {
-                _porteMonnaie -= virement;
-                client.PorteMonnaie += virement;
+                if ((_porteMonnaie - virement) < _decouvertMax)
+                {
+                    _porteMonnaie -= virement;
+                    client.PorteMonnaie += virement;
 
-                return true;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
                 return false;
             }
+            
         }
+
+        private bool TransactionEpargne(CompteEpargne epargne, float virement)
+        {
+            if (_proprietaire.Nom == epargne.Proprieraire.Nom)
+            {
+                if ((_porteMonnaie - virement) < _decouvertMax)
+                {
+                    _porteMonnaie -= virement;
+                    epargne.PorteMonnaie += virement;
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public Personne Proprietaire
+        {
+            get { return _proprietaire; }
+        }
+
     }
 }

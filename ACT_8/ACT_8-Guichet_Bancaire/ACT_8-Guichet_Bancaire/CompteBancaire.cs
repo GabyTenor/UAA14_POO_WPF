@@ -10,15 +10,9 @@ namespace ACT_8_Guichet_Bancaire
     {
         protected float _porteMonnaie;
         protected string _numeroCompte;
+        protected Personne _proprietaire;
 
-        public CompteBancaire(float porteMonnaie, string numeroCompte)
-        {
-            this._porteMonnaie = porteMonnaie;
-            this._numeroCompte = numeroCompte;
-        }
-
-        public abstract string Transaction(CompteCourant client, string typeTransaction, float virement);
-
+        public abstract string Transaction(CompteEpargne epargne, CompteCourant client, string typeTransaction, float virement);
         public abstract string Afficher();
         
         public float PorteMonnaie
