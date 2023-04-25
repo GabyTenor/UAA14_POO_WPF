@@ -1,0 +1,54 @@
+﻿<Page x:Class="ACT_8_Banque.Fenetres.Interface"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ACT_8_Banque.Fenetres"
+      mc:Ignorable="d" 
+      Background="Gray"
+      FontSize="20"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Interface">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Informations du compte : "/>
+            <TextBlock x:Name="compte" Text=""/>
+        </StackPanel>
+
+        <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
+            <RadioButton x:Name="courant" Content="Compte Courant : "/>
+            <TextBlock x:Name="numCourant" Text=""/>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+            <RadioButton x:Name="epargne" Content="Compte Epargne : "/>
+            <TextBlock x:Name="numEpargne" Text=""/>
+        </WrapPanel>
+
+        <StackPanel Grid.Row="2">
+            <TextBlock HorizontalAlignment="Center" Text="Montant du virement : "/>
+            <TextBox x:Name="montant" Height="60"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock HorizontalAlignment="Center" Text="Numero de compte du destinataire "/>
+            <TextBox x:Name="destinataire" Height="60"/>
+        </StackPanel>
+
+        <Button Grid.Row="3" x:Name="valider" Content="Valider la transaction"/>
+        <Button Grid.Row="3" x:Name="annuler" Grid.Column="1" Content="Annuler"/>
+
+
+    </Grid>
+</Page>

@@ -1,9 +1,9 @@
-﻿<Window x:Class="ACT_8_Guichet_Bancaire.MainWindow"
+﻿<Window x:Class="ACT_8_Banque.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ACT_8_Guichet_Bancaire"
+        xmlns:local="clr-namespace:ACT_8_Banque"
         mc:Ignorable="d"
         Background="Gray"
         Title="MainWindow" Height="450" Width="800">
@@ -14,13 +14,13 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        
+
         <TextBlock Grid.ColumnSpan="2" Text="Bienvenue dans la banque d'Asty-Moulin !" FontSize="40"/>
-        
+
         <Frame NavigationUIVisibility="Hidden" x:Name="contenu" Grid.Row="1">
 
         </Frame>
 
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="informations" Text=""/>        
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="informations" Text=""/>
     </Grid>
 </Window>

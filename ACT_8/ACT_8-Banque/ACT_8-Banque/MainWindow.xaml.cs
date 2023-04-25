@@ -1,6 +1,19 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace ACT_8_Guichet_Bancaire
+namespace ACT_8_Banque
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
@@ -15,9 +28,9 @@ namespace ACT_8_Guichet_Bancaire
         };
 
         public CompteCourant[] comptesCourant;
-        public CompteEpargne[] comptesEpargne; 
+        public CompteEpargne[] comptesEpargne;
 
-        
+
 
         public MainWindow()
         {
@@ -44,14 +57,14 @@ namespace ACT_8_Guichet_Bancaire
         {
             int mdp;
 
-            if(prenomInput.Text != "" && nomInput.Text != "" && TryParse(mdpInput.Text, out mdp))
+            if (prenomInput.Text != "" && nomInput.Text != "" && TryParse(mdpInput.Text, out mdp))
             {
                 bool fail = true;
                 int i = 0;
-                
+
                 do
                 {
-                    if(prenomInput.Text == proprietaires[i].Prenom && nomInput.Text == proprietaires[i].Nom && mdp == proprietaires[i].Mdp)
+                    if (prenomInput.Text == proprietaires[i].Prenom && nomInput.Text == proprietaires[i].Nom && mdp == proprietaires[i].Mdp)
                     {
                         fail = false;
                         int id = proprietaires[i].Id;
@@ -68,7 +81,7 @@ namespace ACT_8_Guichet_Bancaire
 
         public bool TryParse(string entree, out int sortie)
         {
-            if(int.TryParse(entree, out sortie))
+            if (int.TryParse(entree, out sortie))
             {
                 return true;
             }

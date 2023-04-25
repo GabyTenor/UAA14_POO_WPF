@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 H:\UAA14_POO_WPF\ACT_8\ACT_8-Guichet_Bancaire\ACT_8-Guichet_Bancaire\App.xaml
-2161737354
+32097102207
 
-10620575808
+12301711278
 13-1505183044
-MainWindow.xaml;Menu.xaml;
+Fenetres\Connexion.xaml;Fenetres\Interface.xaml;MainWindow.xaml;
 
-False
+True
 
