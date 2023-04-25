@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ACT_8_Banque
+namespace ACT_8_Banque.Objets
 {
     public class CompteCourant : CompteBancaire
     {
@@ -15,11 +15,12 @@ namespace ACT_8_Banque
             this._decouvertMax = decouvertMax;
             this._porteMonnaie = porteMonnaie;
             this._numeroCompte = numeroCompte;
+            this._proprietaire = proprietaire;
         }
 
         public override string Afficher()
         {
-            return "Plafond autorisé : " + _decouvertMax + "\nPorte Monnaie : " + _porteMonnaie + "\nNuméro de compte : " + _numeroCompte + "\nPropriétaire : " + _proprietaire.Nom + " " + _proprietaire.Prenom;
+            return "Plafond autorisé : " + _decouvertMax + "--Porte Monnaie : " + _porteMonnaie + "--Numéro de compte : " + _numeroCompte + "--Propriétaire : " + _proprietaire.Nom + " " + _proprietaire.Prenom;
         }
 
         public override string Transaction(CompteEpargne epargne, CompteCourant client, string typeTransaction, float virement)

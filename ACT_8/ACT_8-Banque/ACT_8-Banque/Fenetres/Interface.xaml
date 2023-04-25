@@ -23,19 +23,23 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel>
+        <StackPanel Grid.ColumnSpan="2">
             <TextBlock Text="Informations du compte : "/>
-            <TextBlock x:Name="compte" Text=""/>
+            <TextBlock FontSize="13" x:Name="compte" Text=""/>
         </StackPanel>
 
-        <WrapPanel Grid.Row="1" HorizontalAlignment="Center">
-            <RadioButton x:Name="courant" Content="Compte Courant : "/>
-            <TextBlock x:Name="numCourant" Text=""/>
-        </WrapPanel>
-        <WrapPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
-            <RadioButton x:Name="epargne" Content="Compte Epargne : "/>
-            <TextBlock x:Name="numEpargne" Text=""/>
-        </WrapPanel>
+        <GroupItem Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton FontSize="18" x:Name="courant" Content="Compte Courant "/>
+                <RadioButton FontSize="18" x:Name="epargne" Content="Compte Epargne "/>
+            </StackPanel>
+        </GroupItem>
+        <GroupItem Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton FontSize="18" x:Name="transEpargne" Content="Vers compte épargne"/>
+                <RadioButton FontSize="18" x:Name="transCourant" Content="Vers compte courant"/>
+            </StackPanel>
+        </GroupItem>
 
         <StackPanel Grid.Row="2">
             <TextBlock HorizontalAlignment="Center" Text="Montant du virement : "/>
@@ -49,6 +53,6 @@
         <Button Grid.Row="3" x:Name="valider" Content="Valider la transaction"/>
         <Button Grid.Row="3" x:Name="annuler" Grid.Column="1" Content="Annuler"/>
 
-
+        <TextBlock Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Grid.Row="4" Grid.ColumnSpan="2" x:Name="resultat"/>
     </Grid>
 </Page>

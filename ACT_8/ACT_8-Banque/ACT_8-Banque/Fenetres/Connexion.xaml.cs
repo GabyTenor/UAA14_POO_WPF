@@ -20,9 +20,54 @@ namespace ACT_8_Banque.Fenetres
     /// </summary>
     public partial class Connexion : Page
     {
+        public MainWindow mainWindow = (MainWindow)App.Current.MainWindow;
+
         public Connexion()
         {
             InitializeComponent();
+            connexion.Click += new RoutedEventHandler(Login);
+        }
+        public void Login(object sender, RoutedEventArgs e)
+        {
+            int mdp;
+
+            if (prenomInput.Text != "" && nomInput.Text != "" && TryParse(mdpInput.Text, out mdp))
+            {
+                bool fail = true;
+                int i = 0;
+
+                do
+                {
+                    if (prenomInput.Text == mainWindow.proprietaires[i].Prenom && nomInput.Text == mainWindow.proprietaires[i].Nom && mdp == mainWindow.proprietaires[i].Mdp)
+                    {
+                        fail = false;
+                        int id = mainWindow.proprietaires[i].Id;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                    
+                } while (fail && i != mainWindow.proprietaires.Length);
+
+                if (!fail)
+                {
+                    mainWindow.contenu.Content = new Interface();
+                    mainWindow.login = i;
+                }
+            }
+        }
+
+        public bool TryParse(string entree, out int sortie)
+        {
+            if (int.TryParse(entree, out sortie))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

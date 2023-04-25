@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ACT_8_Banque
+namespace ACT_8_Banque.Objets
 {
     public class Personne
     {

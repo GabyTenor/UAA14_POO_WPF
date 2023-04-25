@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ACT_8_Banque.Fenetres;
+using ACT_8_Banque.Objets;
 
 namespace ACT_8_Banque
 {
@@ -30,14 +32,12 @@ namespace ACT_8_Banque
         public CompteCourant[] comptesCourant;
         public CompteEpargne[] comptesEpargne;
 
-
+        public int login;
 
         public MainWindow()
         {
-            InitializeComponent();
-            contenu.Content = new Connexion();
-            connexion.Click += new RoutedEventHandler(Connexion);
-
+            InitializeComponent();                  
+            
             comptesCourant = new CompteCourant[3]
             {
                 new CompteCourant(-500, 5000, "BE50 3910 8601 6587", proprietaires[0]),
@@ -51,44 +51,10 @@ namespace ACT_8_Banque
                 new CompteEpargne(1.10F, 5000, "BE50 1995 0693 0569", proprietaires[1]),
                 new CompteEpargne(1.07F, 5000, "BE50 1995 0693 0569", proprietaires[2])
             };
+
+            contenu.Content = new Connexion();
         }
 
-        public void Connexion(object sender, RoutedEventArgs e)
-        {
-            int mdp;
-
-            if (prenomInput.Text != "" && nomInput.Text != "" && TryParse(mdpInput.Text, out mdp))
-            {
-                bool fail = true;
-                int i = 0;
-
-                do
-                {
-                    if (prenomInput.Text == proprietaires[i].Prenom && nomInput.Text == proprietaires[i].Nom && mdp == proprietaires[i].Mdp)
-                    {
-                        fail = false;
-                        int id = proprietaires[i].Id;
-                    }
-                    i++;
-                } while (fail && i != proprietaires.Length);
-
-                if (!fail)
-                {
-                    contenu.Content = new Interface();
-                }
-            }
-        }
-
-        public bool TryParse(string entree, out int sortie)
-        {
-            if (int.TryParse(entree, out sortie))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        
     }
 }
