@@ -23,13 +23,13 @@ namespace ACT_8_Banque.Objets
             return "Plafond autorisé : " + _decouvertMax + "--Porte Monnaie : " + _porteMonnaie + "--Numéro de compte : " + _numeroCompte + "--Propriétaire : " + _proprietaire.Nom + " " + _proprietaire.Prenom;
         }
 
-        public override string Transaction(CompteEpargne epargne, CompteCourant client, string typeTransaction, float virement)
+        public override string Transaction(CompteEpargne[] epargne, CompteCourant[] client, string typeTransaction, float virement, int login, int destinataire)
         {
             switch (typeTransaction)
             {
                 case "Virement Autre Personne":
 
-                    if (TransactionEntrePersonnes(client, virement))
+                    if (TransactionEntrePersonnes(client, virement, login, destinataire))
                     {
                         return "Transaction effectué avec succès !";
                     }
@@ -41,7 +41,7 @@ namespace ACT_8_Banque.Objets
 
                 case "Transaction Compte Epargne":
 
-                    if (TransactionEpargne(epargne, virement))
+                    if (TransactionEpargne(epargne, virement, login, destinataire))
                     {
                         return "Transaction effectué avec succès !";
                     }
@@ -57,14 +57,14 @@ namespace ACT_8_Banque.Objets
             }
         }
 
-        private bool TransactionEntrePersonnes(CompteCourant client, float virement)
+        private bool TransactionEntrePersonnes(CompteCourant[] client, float virement, int login, int destinataire)
         {
-            if (_proprietaire.Nom != client.Proprietaire.Nom)
+            if (_proprietaire.Nom != client[login].Proprietaire.Nom)
             {
                 if ((_porteMonnaie - virement) < _decouvertMax)
                 {
                     _porteMonnaie -= virement;
-                    client.PorteMonnaie += virement;
+                    client[login].PorteMonnaie += virement;
 
                     return true;
                 }
@@ -80,14 +80,14 @@ namespace ACT_8_Banque.Objets
 
         }
 
-        private bool TransactionEpargne(CompteEpargne epargne, float virement)
+        private bool TransactionEpargne(CompteEpargne[] epargne, float virement, int login, int destinataire)
         {
-            if (_proprietaire.Nom == epargne.Proprieraire.Nom)
+            if (_proprietaire.Nom == epargne[login].Proprieraire.Nom)
             {
                 if ((_porteMonnaie - virement) < _decouvertMax)
                 {
                     _porteMonnaie -= virement;
-                    epargne.PorteMonnaie += virement;
+                    epargne[login].PorteMonnaie += virement;
 
                     return true;
                 }

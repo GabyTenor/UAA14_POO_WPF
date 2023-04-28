@@ -76,18 +76,25 @@ namespace ACT_8_Banque.Fenetres
                 {
                     e.Handled = true;
                 }
-                else
-                {
-                    float.TryParse(e.Text, out somme);
-                }
             }
         }
 
         public void Transaction(object sender, RoutedEventArgs e)
         {
-            if(compteChoisi == 0)
+            float.TryParse(montant.Text, out somme);
+
+            for (int i = 0; i < 3; i++)
             {
-                resultat.Text = mainWindow.comptesCourant[mainWindow.login].Transaction(mainWindow.comptesEpargne, mainWindow.comptesCourant, choix, somme);
+                
+            }
+
+            if (compteChoisi == 0)
+            {
+                resultat.Text = mainWindow.comptesCourant[mainWindow.login].Transaction(mainWindow.comptesEpargne, mainWindow.comptesCourant, choix, somme, mainWindow.login);
+            }
+            else
+            {
+                resultat.Text = mainWindow.comptesEpargne[mainWindow.login].Transaction(mainWindow.comptesEpargne, mainWindow.comptesCourant, choix, somme, mainWindow.login);
             }
         }
         

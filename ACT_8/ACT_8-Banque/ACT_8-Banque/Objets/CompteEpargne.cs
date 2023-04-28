@@ -16,20 +16,20 @@ namespace ACT_8_Banque.Objets
             this._numeroCompte = numeroCompte;
             this._proprietaire = proprietaire;
         }
-
+         
         public override string Afficher()
         {
             return "Taux d'interêt : " + _taux + "--Porte Monnaie : " + _porteMonnaie + "--Numéro de compte : " + _numeroCompte + "--Propriétaire : " + _proprietaire.Nom + " " + _proprietaire.Prenom;
         }
 
-        public override string Transaction(CompteEpargne epargne, CompteCourant client, string typeTransaction, float virement)
+        public override string Transaction(CompteEpargne[] epargne, CompteCourant[] client, string typeTransaction, float virement, int login, int destinataire)
         {
-            if (_proprietaire.Nom == client.Proprietaire.Nom)
+            if (_proprietaire.Nom == client[login].Proprietaire.Nom)
             {
                 if (virement < _porteMonnaie / 2)
                 {
                     _porteMonnaie -= virement;
-                    client.PorteMonnaie += virement;
+                    client[login].PorteMonnaie += virement;
 
                     return "Transaction effectué!";
                 }

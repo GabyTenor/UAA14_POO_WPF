@@ -12,7 +12,7 @@ namespace ACT_8_Banque.Objets
         protected string _numeroCompte;
         protected Personne _proprietaire;
 
-        public abstract string Transaction(CompteEpargne epargne, CompteCourant client, string typeTransaction, float virement);
+        public abstract string Transaction(CompteEpargne[] epargne, CompteCourant[] client, string typeTransaction, float virement, int login, int destinataire);
         public abstract string Afficher();
 
         public float PorteMonnaie
